@@ -9,12 +9,12 @@ const EventEmitter = require('events').EventEmitter;
 
 module.exports = function(config) {
   if(config === undefined){
-    this.insight_servers = ["https://insight.bitpay.com/", "https://www.localbitcoinschain.com/", "https://search.bitaccess.co/"]
-    this.insight_apis_servers = ["https://insight.bitpay.com/api/", "https://www.localbitcoinschain.com/api/", "https://search.bitaccess.co/insight-api/"]
+    this.insight_servers = ["https://groestlsight.groestlcoin.org/"]
+    this.insight_apis_servers = ["https://groestlsight.groestlcoin.org/api/"]
   } else {
     if(config.testnet === true){
-      this.insight_servers = ["https://test-insight.bitpay.com/"]
-      this.insight_apis_servers = ["https://test-insight.bitpay.com/api/"]
+      this.insight_servers = ["https://groestlsight.groestlcoin.org/"]
+      this.insight_apis_servers = ["https://groestlsight-test.groestlcoin.org/api/"]
     }
   }
   this.connected = false
@@ -41,7 +41,7 @@ module.exports = function(config) {
       result.address = address
       result.in = 0
       result.out = 0
-      result.curr = "bits(uBTC)"
+      result.curr = "groestls(uGRS)"
       request(self.api_url + 'txs/?address=' + address, function(error, response, body) {
         if (!error && response.statusCode == 200) {
           blockdebug('success :)')
@@ -124,7 +124,7 @@ module.exports = function(config) {
             debug('error!', e)
           });
         } else {
-          Reject('Cannot reach any bitcoin insight server... no bitcoin transactions are being received.')
+          Reject('Cannot reach any groestlcoin insight server... no groestlcoin transactions are being received.')
         }
       }
     });
