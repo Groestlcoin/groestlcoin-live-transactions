@@ -1,4 +1,4 @@
-bitcoin-live-transactions
+groestlcoin-live-transactions
 =====
 
 This module uses running [insight-api](https://github.com/Groestlcoin/insight-api) instances to get live groestlcoin transaction as they happen in the Groestlcoin P2P network.
